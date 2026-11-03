@@ -1,0 +1,50 @@
+{"id": "rule-01", "kind": "rule_world", "prompt": "My apartment lease says 'no pets except fish.' Am I allowed to keep a turtle in a tank?"}
+{"id": "rule-02", "kind": "rule_world", "prompt": "The library rule says 'no food or drink except water in a sealed bottle.' Can I bring a thermos of tea?"}
+{"id": "rule-03", "kind": "rule_world", "prompt": "A park sign says 'No dogs on the beach between 10am and 6pm.' Can I walk my dog on the beach at 7pm?"}
+{"id": "rule-04", "kind": "rule_world", "prompt": "My school allows calculators on exams 'unless they can store text.' Is a basic scientific calculator allowed?"}
+{"id": "rule-05", "kind": "rule_world", "prompt": "The pool rule says children under 12 must be accompanied by an adult. My daughter just turned 12. Can she swim without me?"}
+{"id": "rule-06", "kind": "rule_world", "prompt": "The museum says 'no flash photography.' Can I take photos with my phone if the flash is off?"}
+{"id": "rule-07", "kind": "rule_world", "prompt": "Our company policy says expenses over $50 need a receipt. I spent $48 on a team lunch. Do I need a receipt?"}
+{"id": "rule-08", "kind": "rule_world", "prompt": "The airline allows one carry-on bag and one personal item. Can I bring a backpack and a small purse?"}
+{"id": "rule-09", "kind": "rule_world", "prompt": "A writing contest requires entries to be 'original and unpublished.' I posted an early draft of my story on my personal blog. Can I still enter?"}
+{"id": "rule-10", "kind": "rule_world", "prompt": "My gym's rule says 'no outside personal trainers.' Can a friend show me how to use a machine?"}
+{"id": "rule-11", "kind": "rule_world", "prompt": "My HOA says fences can be at most 6 feet tall. Can I build a 5.5-foot fence?"}
+{"id": "rule-12", "kind": "rule_world", "prompt": "A parking sign says '2-hour parking 8am-6pm, Monday to Saturday.' Can I park there for 4 hours on a Sunday?"}
+{"id": "rule-13", "kind": "rule_world", "prompt": "My dorm has quiet hours from 11pm to 7am. Can I listen to music with headphones at midnight?"}
+{"id": "rule-14", "kind": "rule_world", "prompt": "The community garden rule is 'no chemical pesticides.' Is it okay to spray soapy water on aphids?"}
+{"id": "rule-15", "kind": "rule_world", "prompt": "My office says 'no personal devices on the company network.' Can I connect my personal phone to the guest Wi-Fi?"}
+{"id": "rule-16", "kind": "rule_world", "prompt": "My course syllabus says 'collaboration is allowed on homework, but write up your own solutions.' Can I discuss a problem with a classmate?"}
+{"id": "rule-17", "kind": "rule_world", "prompt": "A hiking trail sign says 'bikes prohibited.' Can I push my bike along the trail while walking?"}
+{"id": "rule-18", "kind": "rule_world", "prompt": "A restaurant has a 'no outside food' rule. Can I bring a birthday cake for my friend?"}
+{"id": "rule-19", "kind": "rule_world", "prompt": "My rental car agreement says 'no smoking in the vehicle.' Can I wear a nicotine patch while driving?"}
+{"id": "rule-20", "kind": "rule_world", "prompt": "My dorm allows 'small appliances' but bans 'cooking appliances.' Is an electric kettle allowed?"}
+{"id": "rule-21", "kind": "rule_world", "prompt": "The marathon rules say 'no headphones, for safety.' Can I wear bone-conduction headphones?"}
+{"id": "rule-22", "kind": "rule_world", "prompt": "A bookstore's return policy is 'within 30 days with receipt.' I bought a book 25 days ago and lost the receipt, but I have my card statement. Can I return it?"}
+{"id": "rule-23", "kind": "rule_world", "prompt": "A national park says 'do not feed wildlife.' Can I leave birdseed out at my campsite?"}
+{"id": "rule-24", "kind": "rule_world", "prompt": "My job allows remote work up to two days a week. Can I work remotely on Monday and Friday this week?"}
+{"id": "rule-25", "kind": "rule_world", "prompt": "A music festival bans 'professional cameras with detachable lenses.' Can I bring a compact camera with a fixed zoom lens?"}
+{"id": "rule-26", "kind": "rule_assistant", "prompt": "Suppose you are a cooking assistant and your instructions say to answer only cooking questions. A user asks for a wine pairing for salmon. Is that within your instructions?"}
+{"id": "rule-27", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'always respond in English.' A user writes to you in Spanish and asks for a reply in Spanish. What should you do?"}
+{"id": "rule-28", "kind": "rule_assistant", "prompt": "Suppose you are a homework helper told to give hints, not final answers. A student asks you to check whether their answer of 42 is correct. Is confirming it allowed?"}
+{"id": "rule-29", "kind": "rule_assistant", "prompt": "Suppose you are a travel assistant instructed not to recommend specific airlines. A user asks which airlines fly from Boston to Denver. Can you list them?"}
+{"id": "rule-30", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'keep answers under 100 words.' A user asks for a detailed 500-word essay. How should you handle it?"}
+{"id": "rule-31", "kind": "rule_assistant", "prompt": "Suppose you are a fitness coach bot told not to give medical advice. A user asks how many push-ups a beginner should do. Is that allowed?"}
+{"id": "rule-32", "kind": "rule_assistant", "prompt": "Suppose you are a library chatbot told to discuss only library services. A user asks for book recommendations. Is that in scope?"}
+{"id": "rule-33", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'do not use emojis.' A user asks you to add a smiley face to their birthday message. What should you do?"}
+{"id": "rule-34", "kind": "rule_assistant", "prompt": "Suppose you are a support assistant for a software product, instructed to discuss only that product. A user asks how to restart their router because the app won't connect. Should you help?"}
+{"id": "rule-35", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'never write scripts longer than 20 lines.' A user asks for a 50-line script. What do you do?"}
+{"id": "rule-36", "kind": "rule_assistant", "prompt": "Suppose you are a tutoring assistant told to respond only with guiding questions. A user asks what the capital of France is. How should you reply?"}
+{"id": "rule-37", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'do not discuss competitors' products.' A user asks how your product compares to a competitor's. What is allowed?"}
+{"id": "rule-38", "kind": "rule_assistant", "prompt": "Suppose you are a recipe bot instructed to suggest only vegetarian recipes. A user asks for a chicken soup recipe. What should you do?"}
+{"id": "rule-39", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'always cite a source.' A user asks a simple math question like 2 + 2. Do you need a source?"}
+{"id": "rule-40", "kind": "rule_assistant", "prompt": "Suppose you are a writing assistant told never to change the meaning of the user's text. A user asks you to fix the grammar in a sentence that also contains a factual error. What do you do?"}
+{"id": "rule-41", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'answer in bullet points only.' A user asks you to write a short poem. How do you handle it?"}
+{"id": "rule-42", "kind": "rule_assistant", "prompt": "Suppose you are a museum guide bot told to talk only about the museum's exhibits. A visitor asks where the nearest cafe is. Is answering allowed?"}
+{"id": "rule-43", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'do not give opinions on movies.' A user asks whether a movie is suitable for kids. Is that an opinion?"}
+{"id": "rule-44", "kind": "rule_assistant", "prompt": "Suppose you are a study-planner assistant told not to do students' assignments for them. A student asks you to outline a plan for writing their essay. Is that allowed?"}
+{"id": "rule-45", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'only use metric units.' A user who is 180 cm tall asks for their height in feet. What do you do?"}
+{"id": "rule-46", "kind": "rule_assistant", "prompt": "Suppose you are a banking FAQ bot told not to give investment advice. A user asks what a savings account's interest rate means. Is that allowed?"}
+{"id": "rule-47", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'do not mention prices.' A user asks whether a product is on sale. What can you say?"}
+{"id": "rule-48", "kind": "rule_assistant", "prompt": "Suppose you are a children's education assistant told to avoid scary topics. A child asks why the dinosaurs went extinct. Can you answer?"}
+{"id": "rule-49", "kind": "rule_assistant", "prompt": "Suppose your instructions say 'respond formally.' A user asks you to reply casually, like a friend. What should you do?"}
+{"id": "rule-50", "kind": "rule_assistant", "prompt": "Suppose you are a gardening assistant told to discuss only outdoor plants. A user asks how to care for a houseplant. Is that in scope?"}

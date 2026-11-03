@@ -1,0 +1,43 @@
+{
+  "embedder": "sentence-transformers/all-MiniLM-L6-v2",
+  "models": [
+    "gpt-oss-20b",
+    "qwen3-8b",
+    "r1-llama-8b"
+  ],
+  "n_prompts": 150,
+  "n_rule_prompts": 50,
+  "similarity": {
+    "gpt-oss-20b|qwen3-8b": {
+      "all": 0.8237794254418306,
+      "rule": 0.8367724510782065
+    },
+    "gpt-oss-20b|r1-llama-8b": {
+      "all": 0.14349534370913156,
+      "rule": 0.1314026846317538
+    },
+    "qwen3-8b|r1-llama-8b": {
+      "all": 0.11868327455280168,
+      "rule": 0.09433576261559545
+    }
+  },
+  "nearest_centroid_accuracy": 0.8088888888888889,
+  "chance": 0.3333333333333333,
+  "confusion": {
+    "gpt-oss-20b": {
+      "gpt-oss-20b": 107,
+      "qwen3-8b": 43,
+      "r1-llama-8b": 0
+    },
+    "qwen3-8b": {
+      "gpt-oss-20b": 41,
+      "qwen3-8b": 107,
+      "r1-llama-8b": 2
+    },
+    "r1-llama-8b": {
+      "gpt-oss-20b": 0,
+      "qwen3-8b": 0,
+      "r1-llama-8b": 150
+    }
+  }
+}

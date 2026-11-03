@@ -1,0 +1,12 @@
+# secrets: never commit or sync
+.env
+.env.*
+
+# private planning notes (not part of the artifact)
+role-confusion-benchmark.md
+
+# local / generated
+__pycache__/
+*.pyc
+.DS_Store
+logs/

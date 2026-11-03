@@ -1,0 +1,100 @@
+{"id": "math-01", "kind": "math", "prompt": "A train travels 180 km in 2.5 hours. What is its average speed in km/h?"}
+{"id": "math-02", "kind": "math", "prompt": "A shirt costs $40 and is on sale for 25% off. What is the sale price?"}
+{"id": "math-03", "kind": "math", "prompt": "What is 17 x 23?"}
+{"id": "math-04", "kind": "math", "prompt": "A rectangle has a perimeter of 30 cm and a length of 9 cm. What is its width?"}
+{"id": "math-05", "kind": "math", "prompt": "Solve for x: 3x + 7 = 25."}
+{"id": "math-06", "kind": "math", "prompt": "What is the sum of the interior angles of a hexagon?"}
+{"id": "math-07", "kind": "math", "prompt": "A recipe needs 3 eggs for 12 cookies. How many eggs are needed for 30 cookies?"}
+{"id": "math-08", "kind": "math", "prompt": "What is 15% of 260?"}
+{"id": "math-09", "kind": "math", "prompt": "If you invest $1,000 at 5% simple interest per year, how much interest do you earn in 3 years?"}
+{"id": "math-10", "kind": "math", "prompt": "A car uses 6 liters of fuel per 100 km. How much fuel does it need for 350 km?"}
+{"id": "math-11", "kind": "math", "prompt": "What is the least common multiple of 12 and 18?"}
+{"id": "math-12", "kind": "math", "prompt": "How many seconds are in 3.5 hours?"}
+{"id": "math-13", "kind": "math", "prompt": "A bag has 4 red and 6 blue marbles. What is the probability of drawing a red marble?"}
+{"id": "math-14", "kind": "math", "prompt": "What is the area of a circle with radius 5 cm, in terms of pi?"}
+{"id": "math-15", "kind": "math", "prompt": "If 8 workers build a wall in 6 days, how many days would 12 workers take at the same rate?"}
+{"id": "math-16", "kind": "math", "prompt": "What is the next number in the sequence 2, 6, 12, 20, 30, ...?"}
+{"id": "math-17", "kind": "math", "prompt": "Convert 72 degrees Fahrenheit to Celsius."}
+{"id": "math-18", "kind": "math", "prompt": "A number is doubled and then increased by 5, giving 29. What is the number?"}
+{"id": "math-19", "kind": "math", "prompt": "What is the square root of 196?"}
+{"id": "math-20", "kind": "math", "prompt": "A store sells pencils at 3 for $1.20. How much do 10 pencils cost?"}
+{"id": "math-21", "kind": "math", "prompt": "How many diagonals does a pentagon have?"}
+{"id": "math-22", "kind": "math", "prompt": "What is 2 to the power of 10?"}
+{"id": "math-23", "kind": "math", "prompt": "A clock shows 3:15. What is the angle between the hour and minute hands?"}
+{"id": "math-24", "kind": "math", "prompt": "Simplify the fraction 84/126."}
+{"id": "math-25", "kind": "math", "prompt": "A triangle has sides 6, 8 and 10. Is it a right triangle, and what is its area?"}
+{"id": "math-26", "kind": "math", "prompt": "What is the average of 12, 15, 20, 23 and 30?"}
+{"id": "math-27", "kind": "math", "prompt": "One pipe fills a tank in 4 hours and another in 6 hours. How long do they take together?"}
+{"id": "math-28", "kind": "math", "prompt": "What is 1/3 + 1/4?"}
+{"id": "math-29", "kind": "math", "prompt": "A population of 1,000 grows 10% per year. What is it after 2 years?"}
+{"id": "math-30", "kind": "math", "prompt": "How many ways can you arrange the letters of the word CAT?"}
+{"id": "math-31", "kind": "math", "prompt": "A cyclist rides 12 km at 24 km/h and then 12 km at 12 km/h. What is the average speed for the whole trip?"}
+{"id": "math-32", "kind": "math", "prompt": "What is the greatest common divisor of 48 and 180?"}
+{"id": "math-33", "kind": "math", "prompt": "Solve: 2(x - 3) = x + 4."}
+{"id": "math-34", "kind": "math", "prompt": "A phone plan costs $15 per month plus $0.10 per text. What is the bill for 120 texts?"}
+{"id": "math-35", "kind": "math", "prompt": "What is 0.375 written as a fraction in lowest terms?"}
+{"id": "trivia-01", "kind": "trivia", "prompt": "What is the largest planet in our solar system?"}
+{"id": "trivia-02", "kind": "trivia", "prompt": "Who wrote Pride and Prejudice?"}
+{"id": "trivia-03", "kind": "trivia", "prompt": "What is the chemical symbol for sodium?"}
+{"id": "trivia-04", "kind": "trivia", "prompt": "In which year did humans first land on the Moon?"}
+{"id": "trivia-05", "kind": "trivia", "prompt": "What is the longest river in South America?"}
+{"id": "trivia-06", "kind": "trivia", "prompt": "How many bones are in the adult human body?"}
+{"id": "trivia-07", "kind": "trivia", "prompt": "Which element has atomic number 6?"}
+{"id": "trivia-08", "kind": "trivia", "prompt": "What is the capital of Australia?"}
+{"id": "trivia-09", "kind": "trivia", "prompt": "Who painted The Starry Night?"}
+{"id": "trivia-10", "kind": "trivia", "prompt": "What is the smallest prime number?"}
+{"id": "trivia-11", "kind": "trivia", "prompt": "Which ocean lies between Africa and Australia?"}
+{"id": "trivia-12", "kind": "trivia", "prompt": "Which language has the most native speakers in the world?"}
+{"id": "trivia-13", "kind": "trivia", "prompt": "What gas do plants absorb from the air during photosynthesis?"}
+{"id": "trivia-14", "kind": "trivia", "prompt": "Which country is home to the Great Pyramid of Giza?"}
+{"id": "trivia-15", "kind": "trivia", "prompt": "What is the hardest natural substance?"}
+{"id": "trivia-16", "kind": "trivia", "prompt": "Who developed the theory of general relativity?"}
+{"id": "trivia-17", "kind": "trivia", "prompt": "How many continents are there?"}
+{"id": "trivia-18", "kind": "trivia", "prompt": "What is the boiling point of water at sea level in Fahrenheit?"}
+{"id": "trivia-19", "kind": "trivia", "prompt": "Which planet is closest to the Sun?"}
+{"id": "trivia-20", "kind": "trivia", "prompt": "What is the main ingredient in guacamole?"}
+{"id": "trivia-21", "kind": "trivia", "prompt": "In which city is the Colosseum located?"}
+{"id": "trivia-22", "kind": "trivia", "prompt": "Which musical instrument has 88 keys?"}
+{"id": "trivia-23", "kind": "trivia", "prompt": "What is the freezing point of water in kelvin?"}
+{"id": "trivia-24", "kind": "trivia", "prompt": "Which organ in the human body produces insulin?"}
+{"id": "trivia-25", "kind": "trivia", "prompt": "What is the currency of the United Kingdom?"}
+{"id": "trivia-26", "kind": "trivia", "prompt": "Who was the first President of the United States?"}
+{"id": "trivia-27", "kind": "trivia", "prompt": "What is the tallest mountain in Africa?"}
+{"id": "trivia-28", "kind": "trivia", "prompt": "How many players does a soccer team have on the field at once?"}
+{"id": "trivia-29", "kind": "trivia", "prompt": "What is the largest desert in the world?"}
+{"id": "trivia-30", "kind": "trivia", "prompt": "Which scientist proposed the three laws of motion?"}
+{"id": "trivia-31", "kind": "trivia", "prompt": "Roughly what is the speed of light in a vacuum?"}
+{"id": "trivia-32", "kind": "trivia", "prompt": "Which metal is liquid at room temperature?"}
+{"id": "trivia-33", "kind": "trivia", "prompt": "What is the national animal of Scotland?"}
+{"id": "trivia-34", "kind": "trivia", "prompt": "Which blood type is known as the universal donor?"}
+{"id": "trivia-35", "kind": "trivia", "prompt": "What does DNA stand for?"}
+{"id": "advice-01", "kind": "advice", "prompt": "How can I get better at waking up early?"}
+{"id": "advice-02", "kind": "advice", "prompt": "What's a good way to prepare for a job interview?"}
+{"id": "advice-03", "kind": "advice", "prompt": "How do I start learning to cook if I've never cooked before?"}
+{"id": "advice-04", "kind": "advice", "prompt": "What are some tips for staying focused while studying?"}
+{"id": "advice-05", "kind": "advice", "prompt": "How can I make a long flight more comfortable?"}
+{"id": "advice-06", "kind": "advice", "prompt": "What should I consider when choosing a used car?"}
+{"id": "advice-07", "kind": "advice", "prompt": "How do I politely decline a meeting invitation at work?"}
+{"id": "advice-08", "kind": "advice", "prompt": "What's a good beginner workout routine?"}
+{"id": "advice-09", "kind": "advice", "prompt": "How can I save money on groceries?"}
+{"id": "advice-10", "kind": "advice", "prompt": "How do I keep houseplants alive?"}
+{"id": "advice-11", "kind": "advice", "prompt": "What are good ways to make friends in a new city?"}
+{"id": "advice-12", "kind": "advice", "prompt": "How should I prepare for my first marathon?"}
+{"id": "advice-13", "kind": "advice", "prompt": "How can I reduce my screen time?"}
+{"id": "advice-14", "kind": "advice", "prompt": "What's the best way to learn a new language as an adult?"}
+{"id": "advice-15", "kind": "advice", "prompt": "How do I write a good cover letter?"}
+{"id": "advice-16", "kind": "advice", "prompt": "How can I sleep better at night?"}
+{"id": "advice-17", "kind": "advice", "prompt": "What should I pack for a weekend camping trip?"}
+{"id": "advice-18", "kind": "advice", "prompt": "How do I deal with a noisy neighbor?"}
+{"id": "advice-19", "kind": "advice", "prompt": "How can I become a better public speaker?"}
+{"id": "advice-20", "kind": "advice", "prompt": "What's a good way to organize a small closet?"}
+{"id": "advice-21", "kind": "advice", "prompt": "How do I start investing with a small amount of money?"}
+{"id": "advice-22", "kind": "advice", "prompt": "How can I stay motivated to exercise in winter?"}
+{"id": "advice-23", "kind": "advice", "prompt": "What are some tips for a successful first date?"}
+{"id": "advice-24", "kind": "advice", "prompt": "How should I ask my manager for a raise?"}
+{"id": "advice-25", "kind": "advice", "prompt": "How can I make my resume stand out?"}
+{"id": "advice-26", "kind": "advice", "prompt": "What's a healthy way to handle stress before exams?"}
+{"id": "advice-27", "kind": "advice", "prompt": "How do I choose a good laptop for college?"}
+{"id": "advice-28", "kind": "advice", "prompt": "How can I be more productive when working from home?"}
+{"id": "advice-29", "kind": "advice", "prompt": "What should I do if I lose my passport while traveling?"}
+{"id": "advice-30", "kind": "advice", "prompt": "How do I give constructive feedback to a coworker?"}
