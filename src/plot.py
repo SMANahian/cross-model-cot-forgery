@@ -5,6 +5,7 @@
 
 Usage:  python src/plot.py
 """
+import argparse
 import json
 
 import matplotlib
@@ -36,7 +37,10 @@ def heatmap(ax, est, lo, hi, rows, cols, title, cmap, vmin, vmax, fmt):
 
 
 def main():
-    a = json.loads((ROOT / "results/analysis.json").read_text())
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--tag", default="", help="'' = 3-model figures, '_5m' = 5-model figures")
+    tag = ap.parse_args().tag
+    a = json.loads((ROOT / f"results/analysis{tag}.json").read_text())
     nice = lambda c: c.replace("style:", "") + (" style" if c.startswith("style:") else "")
     cols = [nice(c) for c in a["columns"]]
 
@@ -44,24 +48,24 @@ def main():
     H = a["matrices"]["H"]
     im = heatmap(ax, H["est"], H["lo"], H["hi"], a["targets"], cols,
                  "Hijack rate (code revealed), 95% CI", "Reds", 0, 1, lambda v: f"{100 * v:.0f}%")
-    fig.colorbar(im, ax=ax, fraction=0.03)
+    fig.colorbar(im, ax=ax, fraction=0.03, format=lambda v, _: f"{100 * v:.0f}%")
     fig.tight_layout()
-    fig.savefig(ROOT / "results/fig_hijack_matrix.png", dpi=200)
+    fig.savefig(ROOT / f"results/fig_hijack_matrix{tag}.png", dpi=200)
 
     P = a["matrices"]["P"]
     if not a["included_targets"]:
-        print("-> results/fig_hijack_matrix.png (no pairing plot: every row is flat)")
+        print(f"-> results/fig_hijack_matrix{tag}.png (no pairing plot: every row is flat)")
         return
     style_cols = [nice(f"style:{m}") for m in a["styles"]]
     lim = max(0.05, float(np.nanmax(np.abs(P["est"]))))
     fig, ax = plt.subplots(figsize=(1.8 * len(style_cols) + 2, 0.9 * len(a["included_targets"]) + 2))
     im = heatmap(ax, P["est"], P["lo"], P["hi"], a["included_targets"], style_cols,
-                 "Pairing effect (H - row mean - col mean + grand mean)", "RdBu_r", -lim, lim,
+                 "Pairing effect in pp (H - row mean - col mean + grand mean), 95% CI", "RdBu_r", -lim, lim,
                  lambda v: f"{100 * v:+.0f}")
-    fig.colorbar(im, ax=ax, fraction=0.03)
+    fig.colorbar(im, ax=ax, fraction=0.03, format=lambda v, _: f"{100 * v:+.0f} pp")
     fig.tight_layout()
-    fig.savefig(ROOT / "results/fig_pairing.png", dpi=200)
-    print("-> results/fig_hijack_matrix.png, results/fig_pairing.png")
+    fig.savefig(ROOT / f"results/fig_pairing{tag}.png", dpi=200)
+    print(f"-> results/fig_hijack_matrix{tag}.png, results/fig_pairing{tag}.png")
 
 
 if __name__ == "__main__":

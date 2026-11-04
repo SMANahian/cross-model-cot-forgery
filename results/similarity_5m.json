@@ -1,0 +1,93 @@
+{
+  "embedder": "sentence-transformers/all-MiniLM-L6-v2",
+  "models": [
+    "gpt-oss-20b",
+    "qwen3-8b",
+    "r1-llama-8b",
+    "olmo3-7b",
+    "glm-z1-9b"
+  ],
+  "n_prompts": 150,
+  "n_rule_prompts": 50,
+  "similarity": {
+    "gpt-oss-20b|qwen3-8b": {
+      "all": 0.8237794254418306,
+      "rule": 0.8367724510782065
+    },
+    "gpt-oss-20b|r1-llama-8b": {
+      "all": 0.7693913423986647,
+      "rule": 0.7740901083269973
+    },
+    "gpt-oss-20b|olmo3-7b": {
+      "all": 0.8264887117002987,
+      "rule": 0.852334111291678
+    },
+    "gpt-oss-20b|glm-z1-9b": {
+      "all": 0.8098132752230208,
+      "rule": 0.815231375154162
+    },
+    "qwen3-8b|r1-llama-8b": {
+      "all": 0.8466482957736732,
+      "rule": 0.8291420002521428
+    },
+    "qwen3-8b|olmo3-7b": {
+      "all": 0.9041531650011488,
+      "rule": 0.8966491911732244
+    },
+    "qwen3-8b|glm-z1-9b": {
+      "all": 0.8926452661579924,
+      "rule": 0.8666191638152648
+    },
+    "r1-llama-8b|olmo3-7b": {
+      "all": 0.8633730704543366,
+      "rule": 0.8533008482718755
+    },
+    "r1-llama-8b|glm-z1-9b": {
+      "all": 0.8560621038792097,
+      "rule": 0.8185586075906035
+    },
+    "olmo3-7b|glm-z1-9b": {
+      "all": 0.9107036719564655,
+      "rule": 0.8910744606029455
+    }
+  },
+  "nearest_centroid_accuracy": 0.3586666666666667,
+  "chance": 0.2,
+  "confusion": {
+    "gpt-oss-20b": {
+      "gpt-oss-20b": 101,
+      "qwen3-8b": 14,
+      "r1-llama-8b": 18,
+      "olmo3-7b": 10,
+      "glm-z1-9b": 7
+    },
+    "qwen3-8b": {
+      "gpt-oss-20b": 39,
+      "qwen3-8b": 28,
+      "r1-llama-8b": 28,
+      "olmo3-7b": 24,
+      "glm-z1-9b": 31
+    },
+    "r1-llama-8b": {
+      "gpt-oss-20b": 23,
+      "qwen3-8b": 14,
+      "r1-llama-8b": 65,
+      "olmo3-7b": 23,
+      "glm-z1-9b": 25
+    },
+    "olmo3-7b": {
+      "gpt-oss-20b": 33,
+      "qwen3-8b": 15,
+      "r1-llama-8b": 34,
+      "olmo3-7b": 38,
+      "glm-z1-9b": 30
+    },
+    "glm-z1-9b": {
+      "gpt-oss-20b": 38,
+      "qwen3-8b": 14,
+      "r1-llama-8b": 35,
+      "olmo3-7b": 26,
+      "glm-z1-9b": 37
+    }
+  }
+}

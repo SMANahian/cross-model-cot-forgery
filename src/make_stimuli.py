@@ -13,8 +13,8 @@ One fixed 4-point skeleton (data/attack.json) is rewritten by the rewriter LLM
   neutral        the same points as plain third-person prose, not reasoning
 
 Checks, with regeneration (new seed) on failure:
-  * content: length, no digits/tags, required content words, point 3 ASSERTED
-    (no hedges), no near-duplicates within a column; generic: no model markers;
+  * content: length, no digits/tags, required content words, no listed hedges,
+    no near-duplicates within a column; generic: no model markers;
     neutral: no first person, no "the user", no copied skeleton sentences
   * style identity: a character n-gram classifier (TF-IDF + logistic regression)
     trained on the real rule-decision traces must assign each style:<model> rewrite
@@ -38,7 +38,6 @@ from common import REWRITER, ROOT, load_jsonl, write_jsonl
 from embed import embed_texts, load_embedder
 from style_markers import distinctive_phrases
 
-N_REWRITES = 10
 N_EXAMPLES = 5
 N_PHRASES = 12
 EXCERPT_WORDS = 180
@@ -59,9 +58,13 @@ FIRST_PERSON = re.compile(r"\b(i|we|me|my|our|us)\b")
 
 ATTACK = json.loads((ROOT / "data/attack.json").read_text())
 # v4 (deviations log 8b): each rewrite slot carries one ABSURD condition (the paper's
-# logic ablation), identical across columns, so content is matched item by item.
+# logic ablation), identical across columns, so the condition is matched item by item.
 # The order of conditions over slots is a seeded shuffle.
-CONDITIONS = random.Random(11).sample(ATTACK["conditions"], len(ATTACK["conditions"]))
+# v5 (scaled run): the 40 extra conditions are appended as slots 10-49 with their own
+# seeded shuffle, so the pilot's slot -> condition mapping (slots 0-9) is unchanged.
+_EXTRA = ATTACK.get("conditions_extra", [])
+CONDITIONS = (random.Random(11).sample(ATTACK["conditions"], len(ATTACK["conditions"]))
+              + random.Random(12).sample(_EXTRA, len(_EXTRA)))
 
 
 def points_for(slot):
@@ -194,49 +197,86 @@ def near_duplicate(a, b, threshold=0.8):
     return len(A & B) / max(1, len(A | B)) >= threshold
 
 
+def make_classifier():
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.pipeline import make_pipeline
+    return make_pipeline(
+        TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 5), sublinear_tf=True, min_df=2),
+        LogisticRegression(max_iter=5000, C=10.0))
+
+
 def style_classifier(rule_traces, models):
     """Character n-gram TF-IDF + logistic regression on the real rule-decision traces.
     Used only as an identity check for the style rewrites. Returns (fitted model,
     5-fold cross-validated accuracy on traces, grouped by prompt)."""
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import GroupKFold, cross_val_predict
-    from sklearn.pipeline import make_pipeline
 
     X = [t["reasoning"] for m in models for t in rule_traces[m]]
     y = np.array([m for m in models for _ in rule_traces[m]])
     groups = [t["id"] for m in models for t in rule_traces[m]]
-    make = lambda: make_pipeline(
-        TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 5), sublinear_tf=True, min_df=2),
-        LogisticRegression(max_iter=5000, C=10.0))
-    pred = cross_val_predict(make(), X, y, groups=groups, cv=GroupKFold(n_splits=5))
-    clf = make().fit(X, y)
+    pred = cross_val_predict(make_classifier(), X, y, groups=groups, cv=GroupKFold(n_splits=5))
+    clf = make_classifier().fit(X, y)
     return clf, float((pred == y).mean())
+
+
+def snippet_baseline(rule_traces, models, n_words=50):
+    """Calibration for the identity check: the classifier's accuracy on REAL traces cut
+    to forgery length, held out by prompt. Full-trace accuracy overstates what it can do
+    on a 40-60 word text."""
+    from sklearn.model_selection import GroupKFold
+
+    X = [t["reasoning"] for m in models for t in rule_traces[m]]
+    y = np.array([m for m in models for _ in rule_traces[m]])
+    groups = [t["id"] for m in models for t in rule_traces[m]]
+    correct = collections.defaultdict(list)
+    for train, test in GroupKFold(n_splits=5).split(X, y, groups):
+        clf = make_classifier().fit([X[i] for i in train], y[train])
+        cut = [" ".join(X[i].split()[:n_words]) for i in test]
+        for i, pred in zip(test, clf.predict(cut)):
+            correct[y[i]].append(pred == y[i])
+    return {m: float(np.mean(correct[m])) for m in models}
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--models", nargs="+", default=["gpt-oss-20b", "qwen3-8b", "r1-llama-8b"])
+    ap.add_argument("--extend", action="store_true",
+                    help="keep the existing results/stimuli.jsonl rows unchanged; generate only new slots")
+    ap.add_argument("--add-models", nargs="*", default=[],
+                    help="keep existing rows unchanged; add a style column for each of these models, all slots")
     args = ap.parse_args()
-    models = args.models
+    models = args.models + args.add_models  # phrases, classifier and checks see every model
 
     rule_traces = {m: [r for r in load_jsonl(ROOT / f"results/traces/{m}.jsonl")
                        if r["kind"].startswith("rule") and r["reasoning"]] for m in models}
     phrases = distinctive_phrases({m: [t["reasoning"] for t in rule_traces[m]] for m in models},
                                   k=N_PHRASES)
 
-    # ---- the 10 slots per column
+    old_rows = load_jsonl(ROOT / "results/stimuli.jsonl") if args.extend or args.add_models else []
+    for r in old_rows:  # the frozen texts must still sit on the same conditions
+        assert r["condition"] == CONDITIONS[r["slot"]]["policy"], f"slot {r['slot']} changed condition"
+    existing_cols = {r["column"] for r in old_rows}
+    new_models = [m for m in args.add_models if f"style:{m}" not in existing_cols]
+    if args.add_models:
+        slots, job_models = range(len(CONDITIONS)), new_models
+    else:
+        slots = range(1 + max((r["slot"] for r in old_rows), default=-1), len(CONDITIONS))
+        job_models = models
+    print(f"generating {job_models} for slots {slots.start}-{slots.stop - 1} ({len(old_rows)} existing rows kept)")
+
+    # ---- one slot per condition, for every column
     jobs = []
-    for m in models:
-        for slot in range(N_REWRITES):
+    for m in job_models:
+        for slot in slots:
             rng = random.Random(f"style:{m}:{slot}")
             ex = rng.sample(rule_traces[m], N_EXAMPLES)
             examples = "\n\n".join(f"<EXAMPLE>\n{excerpt(t['reasoning'])}\n</EXAMPLE>" for t in ex)
             ph = ", ".join(f'"{p}"' for p in phrases[m])
             jobs.append({"column": f"style:{m}", "slot": slot, "examples": [t["id"] for t in ex],
                          "prompt": STYLE_PROMPT.format(examples=examples, points=points_for(slot), phrases=ph)})
-    for column, template in [("generic", GENERIC_PROMPT), ("neutral", NEUTRAL_PROMPT)]:
-        for slot in range(N_REWRITES):
+    for column, template in [] if args.add_models else [("generic", GENERIC_PROMPT), ("neutral", NEUTRAL_PROMPT)]:
+        for slot in slots:
             jobs.append({"column": column, "slot": slot, "examples": [],
                          "prompt": template.format(points=points_for(slot))})
     for j in jobs:
@@ -252,6 +292,8 @@ def main():
         pending = list(batch)
         in_batch = {id(j) for j in batch}
         accepted = collections.defaultdict(list)
+        for k in old_rows:
+            accepted[k["column"]].append(k["text"])
         for k in jobs:
             if id(k) not in in_batch and k.get("text") and not k.get("fails"):
                 accepted[k["column"]].append(k["text"])
@@ -323,7 +365,8 @@ def main():
         j["sims"] = sims_to_models(j["text"], exclude=set(j["examples"]))
         j["nearest"] = max(j["sims"], key=j["sims"].get)
         j["spread"] = max(j["sims"].values()) - min(j["sims"].values())
-    threshold = statistics.median(j["spread"] for j in style_jobs)
+    threshold = statistics.median([j["spread"] for j in style_jobs]
+                                  + [r["spread"] for r in old_rows if r["column"].startswith("style:")])
     for _ in range(3):  # pre-registered generic balance rule (embedding-based)
         bad = [j for j in jobs if j["column"] == "generic" and j["spread"] >= threshold]
         if not bad:
@@ -344,23 +387,37 @@ def main():
     for r in rows:
         r["words"] = len(r["text"].split())
         r["balance_ok"] = (r["spread"] < threshold) if r["column"] == "generic" else None
-    write_jsonl(ROOT / "results/stimuli.jsonl", rows)
+    all_rows = sorted(old_rows + rows, key=lambda r: (r["column"], r["slot"]))
+    write_jsonl(ROOT / "results/stimuli.jsonl", all_rows)
+
+    def summarize(rs_all):
+        out = {}
+        for col in sorted({r["column"] for r in rs_all}):
+            rs = [r for r in rs_all if r["column"] == col]
+            is_style = col.startswith("style:")
+            out[col] = {
+                "n": len(rs), "failed_content_checks": sum(bool(r["fails"]) for r in rs),
+                "mean_words": round(sum(r["words"] for r in rs) / len(rs), 1),
+                "classifier_correct_first_pass": sum(r["clf_pred_first"] == r["intended"] for r in rs) if is_style else None,
+                "classifier_correct_final": sum(r["clf_pred"] == r["intended"] for r in rs) if is_style else None,
+                "classifier_pred_counts": {m: sum(r["clf_pred"] == m for r in rs) for m in models},
+                "embedding_nearest_counts": {m: sum(r["nearest"] == m for r in rs) for m in models},
+            }
+        return out
 
     report = {"rewriter": REWRITER["hf_id"], "prompt_template": "paper forgery prompt (adapted)",
               "phrases": phrases, "classifier_cv_accuracy_on_traces": clf_cv_acc,
-              "generic_spread_threshold": threshold, "columns": {}}
-    for col in sorted({r["column"] for r in rows}):
-        rs = [r for r in rows if r["column"] == col]
-        is_style = col.startswith("style:")
-        report["columns"][col] = {
-            "n": len(rs), "failed_content_checks": sum(bool(r["fails"]) for r in rs),
-            "mean_words": round(sum(r["words"] for r in rs) / len(rs), 1),
-            "classifier_correct_first_pass": sum(r["clf_pred_first"] == r["intended"] for r in rs) if is_style else None,
-            "classifier_correct_final": sum(r["clf_pred"] == r["intended"] for r in rs) if is_style else None,
-            "classifier_pred_counts": {m: sum(r["clf_pred"] == m for r in rs) for m in models},
-            "embedding_nearest_counts": {m: sum(r["nearest"] == m for r in rs) for m in models},
-        }
-    (ROOT / "results/stimuli_report.json").write_text(json.dumps(report, indent=2))
+              "generic_spread_threshold": threshold, "n_slots": len(CONDITIONS),
+              "columns": summarize(all_rows), "columns_new_slots_only": summarize(rows),
+              "snippet_baseline_50_words": snippet_baseline(rule_traces, models)}
+    # Identity of EVERY text under the current classifier (older rows were gated by a
+    # classifier that had fewer classes).
+    preds = clf.predict([r["text"] for r in all_rows])
+    report["identity_all_columns"] = {
+        col: dict(collections.Counter(str(p) for r, p in zip(all_rows, preds) if r["column"] == col))
+        for col in sorted({r["column"] for r in all_rows})}
+    name = "results/stimuli_report_v6.json" if args.add_models else "results/stimuli_report.json"
+    (ROOT / name).write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))
     for col in sorted({r["column"] for r in rows}):
         print(f"\n===== {col} (first 3) =====")

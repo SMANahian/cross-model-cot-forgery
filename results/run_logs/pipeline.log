@@ -1,0 +1,14 @@
+[21:37:24] skip traces_gpt-oss-20b (results/traces/gpt-oss-20b.jsonl exists)
+[21:37:24] skip traces_qwen3-8b (results/traces/qwen3-8b.jsonl exists)
+[21:37:24] skip traces_r1-llama-8b (results/traces/r1-llama-8b.jsonl exists)
+[21:37:24] skip similarity (results/similarity.json exists)
+[21:37:24] run  stimuli
+[21:39:19] run  items
+[21:39:19] run  smoke_gpt-oss-20b
+[21:40:30] run  smoke_qwen3-8b
+[21:41:25] run  smoke_r1-llama-8b
+[21:42:23] run  full_gpt-oss-20b
+[21:46:20] run  full_qwen3-8b
+[21:50:02] run  full_r1-llama-8b
+[21:54:30] run  score/analyze/plot
+[21:54:35] ALL DONE

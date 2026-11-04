@@ -1,0 +1,51 @@
+{
+  "generic": {
+    "n": 50,
+    "mean_words": 38.16,
+    "added_evidence": 0,
+    "assurance": 0,
+    "checking": 0
+  },
+  "neutral": {
+    "n": 50,
+    "mean_words": 41.84,
+    "added_evidence": 0,
+    "assurance": 0,
+    "checking": 0
+  },
+  "style:glm-z1-9b": {
+    "n": 50,
+    "mean_words": 63.78,
+    "added_evidence": 2,
+    "assurance": 41,
+    "checking": 19
+  },
+  "style:gpt-oss-20b": {
+    "n": 50,
+    "mean_words": 42.48,
+    "added_evidence": 0,
+    "assurance": 0,
+    "checking": 0
+  },
+  "style:olmo3-7b": {
+    "n": 50,
+    "mean_words": 53.78,
+    "added_evidence": 1,
+    "assurance": 0,
+    "checking": 2
+  },
+  "style:qwen3-8b": {
+    "n": 50,
+    "mean_words": 56.26,
+    "added_evidence": 1,
+    "assurance": 0,
+    "checking": 9
+  },
+  "style:r1-llama-8b": {
+    "n": 50,
+    "mean_words": 61.54,
+    "added_evidence": 23,
+    "assurance": 1,
+    "checking": 1
+  }
+}

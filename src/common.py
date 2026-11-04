@@ -38,12 +38,18 @@ MODELS = {
         # contingency, approved): rule in a first user turn + assistant acknowledgement.
         "rule_placement": "first_user_turn",
     },
-    # Stretch goal (proposal 3.2). Flag: its card prescribes its own reasoning system
-    # prompt, so attack prompts need a decision before this model is used as a target.
-    "phi4-reasoning": {
-        "hf_id": "microsoft/Phi-4-reasoning",
-        "format": "think",
-        "sampling": {"temperature": 0.8, "top_p": 0.95, "top_k": 50},
+    # v6 (PREREGISTRATION_v6.md). Phi-4-reasoning was dropped: its template hard-codes its
+    # own system prompt and silently discards any system message, so the rule never arrives.
+    "olmo3-7b": {
+        "hf_id": "allenai/Olmo-3-7B-Think",
+        "format": "think",  # the template opens <think> in the generation prompt
+        "sampling": {"temperature": 0.6, "top_p": 0.95},
+        "template_kwargs": {},
+    },
+    "glm-z1-9b": {
+        "hf_id": "zai-org/GLM-Z1-9B-0414",
+        "format": "think",  # the template opens <think> in the generation prompt
+        "sampling": {"temperature": 0.6, "top_p": 0.95, "top_k": 40},
         "template_kwargs": {},
     },
 }
@@ -60,9 +66,11 @@ def load_jsonl(path):
 def write_jsonl(path, rows):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w") as f:
+    tmp = path.with_suffix(path.suffix + ".tmp")  # a kill mid-write must not truncate the real file
+    with open(tmp, "w") as f:
         for row in rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    tmp.replace(path)
 
 
 def load_tokenizer(cfg):

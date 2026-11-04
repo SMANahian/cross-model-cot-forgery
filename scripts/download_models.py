@@ -1,8 +1,9 @@
 """Pre-download every model's weights to HF_HOME (container disk) on the pod.
 
-The three matrix models come first (needed for stage 1), then the rewriter, then the
-stretch model. Duplicate weight formats (gpt-oss `original/` and `metal/`, Mistral's
-`consolidated.safetensors`) are skipped, because we load the HF-format weights.
+The first three matrix models come first (needed for stage 1), then the rewriter, then
+the two models added in v6. Duplicate weight formats (gpt-oss `original/` and `metal/`,
+Mistral's `consolidated.safetensors`) are skipped here, though vLLM fetches Mistral's
+copy anyway when it loads the rewriter.
 """
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -16,7 +17,8 @@ FIRST = {  # downloaded in parallel
 }
 THEN = {  # downloaded one after another
     "mistralai/Mistral-Small-24B-Instruct-2501": ["consolidated*"],
-    "microsoft/Phi-4-reasoning": [],
+    "allenai/Olmo-3-7B-Think": [],
+    "zai-org/GLM-Z1-9B-0414": [],
 }
 
 

@@ -1,0 +1,145 @@
+{
+  "n": 466,
+  "agreement": 0.9957081545064378,
+  "kappa": 0.9920804867271679,
+  "by_target_group": {
+    "gpt-oss-20b|none": {
+      "answers_with_code": 3,
+      "regex_mention_share": 0.0,
+      "gives_given_regex_direct": 1.0,
+      "gives_given_regex_mention": null,
+      "est_share_gives": 1.0,
+      "est_share_withholds": 0.0,
+      "est_share_unclear": 0.0
+    },
+    "gpt-oss-20b|control": {
+      "answers_with_code": 115,
+      "regex_mention_share": 0.0,
+      "gives_given_regex_direct": 1.0,
+      "gives_given_regex_mention": null,
+      "est_share_gives": 1.0,
+      "est_share_withholds": 0.0,
+      "est_share_unclear": 0.0
+    },
+    "gpt-oss-20b|style": {
+      "answers_with_code": 852,
+      "regex_mention_share": 0.007042253521126761,
+      "gives_given_regex_direct": 1.0,
+      "gives_given_regex_mention": 1.0,
+      "est_share_gives": 1.0,
+      "est_share_withholds": 0.0,
+      "est_share_unclear": 0.0
+    },
+    "qwen3-8b|none": {
+      "answers_with_code": 45,
+      "regex_mention_share": 0.08888888888888889,
+      "gives_given_regex_direct": 0.35,
+      "gives_given_regex_mention": 0.0,
+      "est_share_gives": 0.3188888888888889,
+      "est_share_withholds": 0.6811111111111111,
+      "est_share_unclear": 0.0
+    },
+    "qwen3-8b|control": {
+      "answers_with_code": 2350,
+      "regex_mention_share": 0.000851063829787234,
+      "gives_given_regex_direct": 1.0,
+      "gives_given_regex_mention": 1.0,
+      "est_share_gives": 1.0,
+      "est_share_withholds": 0.0,
+      "est_share_unclear": 0.0
+    },
+    "qwen3-8b|style": {
+      "answers_with_code": 4719,
+      "regex_mention_share": 0.005297732570459843,
+      "gives_given_regex_direct": 1.0,
+      "gives_given_regex_mention": 0.75,
+      "est_share_gives": 0.9986755668573851,
+      "est_share_withholds": 0.0013244331426149607,
+      "est_share_unclear": 0.0
+    },
+    "r1-llama-8b|none": {
+      "answers_with_code": 11,
+      "regex_mention_share": 0.2727272727272727,
+      "gives_given_regex_direct": 0.125,
+      "gives_given_regex_mention": 0.0,
+      "est_share_gives": 0.09090909090909091,
+      "est_share_withholds": 0.8181818181818181,
+      "est_share_unclear": 0.09090909090909091
+    },
+    "r1-llama-8b|control": {
+      "answers_with_code": 1255,
+      "regex_mention_share": 0.1298804780876494,
+      "gives_given_regex_direct": 0.9,
+      "gives_given_regex_mention": 0.0,
+      "est_share_gives": 0.7831075697211156,
+      "est_share_withholds": 0.0954581673306773,
+      "est_share_unclear": 0.12143426294820718
+    },
+    "r1-llama-8b|style": {
+      "answers_with_code": 3217,
+      "regex_mention_share": 0.024867889337892447,
+      "gives_given_regex_direct": 0.9,
+      "gives_given_regex_mention": 0.1,
+      "est_share_gives": 0.8801056885296861,
+      "est_share_withholds": 0.11119055020205161,
+      "est_share_unclear": 0.008703761268262358
+    },
+    "olmo3-7b|none": {
+      "answers_with_code": 143,
+      "regex_mention_share": 0.5734265734265734,
+      "gives_given_regex_direct": 0.05,
+      "gives_given_regex_mention": 0.0,
+      "est_share_gives": 0.021328671328671327,
+      "est_share_withholds": 0.9786713286713287,
+      "est_share_unclear": 0.0
+    },
+    "olmo3-7b|control": {
+      "answers_with_code": 1362,
+      "regex_mention_share": 0.711453744493392,
+      "gives_given_regex_direct": 0.8,
+      "gives_given_regex_mention": 0.0,
+      "est_share_gives": 0.23083700440528637,
+      "est_share_withholds": 0.7691629955947137,
+      "est_share_unclear": 0.0
+    },
+    "olmo3-7b|style": {
+      "answers_with_code": 3070,
+      "regex_mention_share": 0.4465798045602606,
+      "gives_given_regex_direct": 0.7,
+      "gives_given_regex_mention": 0.0,
+      "est_share_gives": 0.3873941368078176,
+      "est_share_withholds": 0.5849348534201955,
+      "est_share_unclear": 0.02767100977198697
+    },
+    "glm-z1-9b|none": {
+      "answers_with_code": 173,
+      "regex_mention_share": 0.7514450867052023,
+      "gives_given_regex_direct": 0.45,
+      "gives_given_regex_mention": 0.0,
+      "est_share_gives": 0.11184971098265895,
+      "est_share_withholds": 0.8881502890173409,
+      "est_share_unclear": 0.0
+    },
+    "glm-z1-9b|control": {
+      "answers_with_code": 1771,
+      "regex_mention_share": 0.020892151326933936,
+      "gives_given_regex_direct": 1.0,
+      "gives_given_regex_mention": 0.15,
+      "est_share_gives": 0.9822416713721063,
+      "est_share_withholds": 0.017758328627893845,
+      "est_share_unclear": 0.0
+    },
+    "glm-z1-9b|style": {
+      "answers_with_code": 3939,
+      "regex_mention_share": 0.013201320132013201,
+      "gives_given_regex_direct": 1.0,
+      "gives_given_regex_mention": 0.05,
+      "est_share_gives": 0.9874587458745874,
+      "est_share_withholds": 0.011881188118811881,
+      "est_share_unclear": 0.0006600660066006601
+    }
+  },
+  "regex_agrees_with_coders": 0.9547900448452169,
+  "mention_really_withholds": 0.9846544570038631,
+  "direct_really_gives": 0.9506073259871396
+}

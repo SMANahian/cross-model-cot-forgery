@@ -1,0 +1,76 @@
+{
+  "condition_sd": 0.75,
+  "n_draws": 2000,
+  "observed": {
+    "D1_raw": 0.0164533333333333,
+    "D2_raw": 0.6545498289675679,
+    "D2off_raw": 0.6408186772729223,
+    "D1_logit": 0.09466577422251558,
+    "D2_logit": 0.6793448201530135,
+    "D2off_logit": 0.6229853156312799
+  },
+  "shared": {
+    "D1_raw": {
+      "null_mean": -0.0038537599999999995,
+      "null_sd": 0.005393278285273256,
+      "share_at_least_observed": 0.0
+    },
+    "D2_raw": {
+      "null_mean": 0.05842210154763507,
+      "null_sd": 0.32221296914626585,
+      "share_at_least_observed": 0.027
+    },
+    "D2off_raw": {
+      "null_mean": -0.05775269830089409,
+      "null_sd": 0.313684233372633,
+      "share_at_least_observed": 0.009
+    },
+    "D1_logit": {
+      "null_mean": 0.0013233196330617828,
+      "null_sd": 0.02789186150092622,
+      "share_at_least_observed": 0.0
+    },
+    "D2_logit": {
+      "null_mean": 0.07369941392766567,
+      "null_sd": 0.37657331907088387,
+      "share_at_least_observed": 0.0495
+    },
+    "D2off_logit": {
+      "null_mean": -0.07916371886016657,
+      "null_sd": 0.38880576474340445,
+      "share_at_least_observed": 0.037
+    }
+  },
+  "independent": {
+    "D1_raw": {
+      "null_mean": -0.003909280000000001,
+      "null_sd": 0.009164858901347035,
+      "share_at_least_observed": 0.01
+    },
+    "D2_raw": {
+      "null_mean": 0.09414713502871262,
+      "null_sd": 0.33711372450233434,
+      "share_at_least_observed": 0.039
+    },
+    "D2off_raw": {
+      "null_mean": -0.04946188986353481,
+      "null_sd": 0.34604063737720936,
+      "share_at_least_observed": 0.016
+    },
+    "D1_logit": {
+      "null_mean": 0.001261325648731634,
+      "null_sd": 0.04754895260971321,
+      "share_at_least_observed": 0.026
+    },
+    "D2_logit": {
+      "null_mean": 0.09364099236097241,
+      "null_sd": 0.3768087442104361,
+      "share_at_least_observed": 0.06
+    },
+    "D2off_logit": {
+      "null_mean": -0.0665864333523857,
+      "null_sd": 0.39340019839002854,
+      "share_at_least_observed": 0.042
+    }
+  }
+}

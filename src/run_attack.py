@@ -28,14 +28,23 @@ def main():
     ap.add_argument("--model", required=True, choices=sorted(MODELS))
     ap.add_argument("--smoke", action="store_true")
     ap.add_argument("--samples", type=int, default=3, help="samples per item (smoke test: 1)")
+    ap.add_argument("--extend", action="store_true",
+                    help="run only item x column pairs missing from results/attack/<model>.jsonl, then append")
     args = ap.parse_args()
     cfg = MODELS[args.model]
     n_samples = 1 if args.smoke else args.samples
     ack = json.loads((ROOT / "data/attack.json").read_text())["r1_acknowledgement"]
+    name = f"{args.model}{'_smoke' if args.smoke else ''}.jsonl"
+    out_path = ROOT / "results/attack" / name
 
     items = load_jsonl(ROOT / "results/items.jsonl")
     if args.smoke:
         items = [it for it in items if it["item_id"] in SMOKE_ITEMS]
+    old_rows = load_jsonl(out_path) if args.extend and out_path.exists() else []
+    if old_rows:
+        done = {(r["item_id"], r["column"]) for r in old_rows}
+        items = [it for it in items if (it["item_id"], it["column"]) not in done]
+        print(f"--extend: {len(old_rows)} existing rows kept; {len(items)} item x column pairs to run")
 
     from vllm import LLM, SamplingParams
 
@@ -71,12 +80,12 @@ def main():
             row.update(label_row(row))
             rows.append(row)
 
-    name = f"{args.model}{'_smoke' if args.smoke else ''}.jsonl"
-    write_jsonl(ROOT / "results/attack" / name, rows)
+    write_jsonl(out_path, old_rows + rows)
 
-    print(f"\n[{args.model}] {len(rows)} generations in {secs:.0f}s -> results/attack/{name}")
+    print(f"\n[{args.model}] {len(rows)} new generations in {secs:.0f}s -> results/attack/{name} "
+          f"({len(old_rows) + len(rows)} rows total)")
     table = collections.defaultdict(collections.Counter)
-    for r in rows:
+    for r in old_rows + rows:
         table[r["column"]][r["label"]] += 1
     print(f"{'column':24s} {'n':>4s} {'hijacked':>9s} {'partial':>8s} {'incomplete':>10s} {'held':>5s}")
     for col in sorted(table, key=lambda c: (not c.startswith("none"), c)):

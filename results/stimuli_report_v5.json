@@ -1,0 +1,225 @@
+{
+  "rewriter": "mistralai/Mistral-Small-24B-Instruct-2501",
+  "prompt_template": "paper forgery prompt (adapted)",
+  "phrases": {
+    "gpt-oss-20b": [
+      "you can",
+      "the policy",
+      "we can",
+      "yes,",
+      "also mention",
+      "mention that",
+      "provide a",
+      "that is",
+      "user asks",
+      "so we",
+      "the instruction",
+      "a user"
+    ],
+    "qwen3-8b": [
+      "the user is",
+      "However,",
+      "let me",
+      "also,",
+      "user is asking",
+      "so the",
+      "i need to",
+      "rule is",
+      "the instructions",
+      "would be",
+      "wait,",
+      "i should"
+    ],
+    "r1-llama-8b": [
+      "i should",
+      "so,",
+      "i can",
+      "i think",
+      "think about",
+      "to figure",
+      "figure out",
+      "way,",
+      "i have",
+      "hmm,",
+      "a bit",
+      "trying to"
+    ]
+  },
+  "classifier_cv_accuracy_on_traces": 0.9866666666666667,
+  "generic_spread_threshold": 0.10769924487380658,
+  "n_slots": 50,
+  "columns": {
+    "generic": {
+      "n": 50,
+      "failed_content_checks": 0,
+      "mean_words": 38.2,
+      "classifier_correct_first_pass": null,
+      "classifier_correct_final": null,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 0,
+        "qwen3-8b": 50,
+        "r1-llama-8b": 0
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 50,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    },
+    "neutral": {
+      "n": 50,
+      "failed_content_checks": 0,
+      "mean_words": 41.8,
+      "classifier_correct_first_pass": null,
+      "classifier_correct_final": null,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 0,
+        "qwen3-8b": 48,
+        "r1-llama-8b": 2
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 50,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    },
+    "style:gpt-oss-20b": {
+      "n": 50,
+      "failed_content_checks": 0,
+      "mean_words": 42.5,
+      "classifier_correct_first_pass": 0,
+      "classifier_correct_final": 4,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 4,
+        "qwen3-8b": 46,
+        "r1-llama-8b": 0
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 50,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    },
+    "style:qwen3-8b": {
+      "n": 50,
+      "failed_content_checks": 0,
+      "mean_words": 56.3,
+      "classifier_correct_first_pass": 50,
+      "classifier_correct_final": 50,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 0,
+        "qwen3-8b": 50,
+        "r1-llama-8b": 0
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 50,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    },
+    "style:r1-llama-8b": {
+      "n": 50,
+      "failed_content_checks": 0,
+      "mean_words": 61.5,
+      "classifier_correct_first_pass": 8,
+      "classifier_correct_final": 30,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 0,
+        "qwen3-8b": 20,
+        "r1-llama-8b": 30
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 50,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    }
+  },
+  "columns_new_slots_only": {
+    "generic": {
+      "n": 40,
+      "failed_content_checks": 0,
+      "mean_words": 38.1,
+      "classifier_correct_first_pass": null,
+      "classifier_correct_final": null,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 0,
+        "qwen3-8b": 40,
+        "r1-llama-8b": 0
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 40,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    },
+    "neutral": {
+      "n": 40,
+      "failed_content_checks": 0,
+      "mean_words": 41.9,
+      "classifier_correct_first_pass": null,
+      "classifier_correct_final": null,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 0,
+        "qwen3-8b": 38,
+        "r1-llama-8b": 2
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 40,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    },
+    "style:gpt-oss-20b": {
+      "n": 40,
+      "failed_content_checks": 0,
+      "mean_words": 42.3,
+      "classifier_correct_first_pass": 0,
+      "classifier_correct_final": 4,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 4,
+        "qwen3-8b": 36,
+        "r1-llama-8b": 0
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 40,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    },
+    "style:qwen3-8b": {
+      "n": 40,
+      "failed_content_checks": 0,
+      "mean_words": 55.1,
+      "classifier_correct_first_pass": 40,
+      "classifier_correct_final": 40,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 0,
+        "qwen3-8b": 40,
+        "r1-llama-8b": 0
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 40,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    },
+    "style:r1-llama-8b": {
+      "n": 40,
+      "failed_content_checks": 0,
+      "mean_words": 61.9,
+      "classifier_correct_first_pass": 7,
+      "classifier_correct_final": 24,
+      "classifier_pred_counts": {
+        "gpt-oss-20b": 0,
+        "qwen3-8b": 16,
+        "r1-llama-8b": 24
+      },
+      "embedding_nearest_counts": {
+        "gpt-oss-20b": 40,
+        "qwen3-8b": 0,
+        "r1-llama-8b": 0
+      }
+    }
+  }
+}

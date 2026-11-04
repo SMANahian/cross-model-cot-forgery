@@ -1,0 +1,7 @@
+OK allenai/Olmo-3-7B-Think
+Fetching 16 files:   0%|          | 0/16 [00:00<?, ?it/s]Fetching 16 files:  88%|████████▊ | 14/16 [00:23<00:03,  1.70s/it]Fetching 16 files:  94%|█████████▍| 15/16 [00:32<00:02,  2.32s/it]Fetching 16 files: 100%|██████████| 16/16 [00:44<00:00,  3.45s/it]Fetching 16 files: 100%|██████████| 16/16 [00:44<00:00,  2.76s/it]
+OK zai-org/GLM-Z1-9B-0414
+Fetching 15 files:   0%|          | 0/15 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 15 files:  80%|████████  | 12/15 [02:23<00:35, 11.96s/it]Fetching 15 files:  87%|████████▋ | 13/15 [02:35<00:23, 11.98s/it]Fetching 15 files:  93%|█████████▎| 14/15 [02:57<00:13, 13.23s/it]Fetching 15 files: 100%|██████████| 15/15 [03:36<00:00, 17.45s/it]Fetching 15 files: 100%|██████████| 15/15 [03:36<00:00, 14.46s/it]
+DOWNLOADS DONE
+[00:00:01] traces done

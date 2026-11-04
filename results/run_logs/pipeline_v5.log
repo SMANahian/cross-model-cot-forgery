@@ -1,0 +1,8 @@
+[22:58:55] stimuli (extend to 50 conditions)
+v5 stimuli frozen at 2026-11-03T23:02:07Z: 9b1f87e8700c3be3
+[23:02:07] items (50 x 20)
+[23:02:07] attack gpt-oss-20b (new items, 1 sample)
+[23:10:34] attack qwen3-8b (new items, 1 sample)
+[23:17:16] attack r1-llama-8b (new items, 1 sample)
+[23:27:05] score / analyze (all, fresh, pilot) / plot
+[23:27:22] V5 DONE

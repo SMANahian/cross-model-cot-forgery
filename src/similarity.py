@@ -27,6 +27,7 @@ DEFAULT_MODELS = ["gpt-oss-20b", "qwen3-8b", "r1-llama-8b"]
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--models", nargs="+", default=DEFAULT_MODELS)
+    ap.add_argument("--out", default="results/similarity.json")
     args = ap.parse_args()
     models = args.models
 
@@ -61,7 +62,7 @@ def main():
         "nearest_centroid_accuracy": correct / total, "chance": 1 / len(models),
         "confusion": confusion,
     }
-    path = ROOT / "results/similarity.json"
+    path = ROOT / args.out
     path.write_text(json.dumps(out, indent=2))
     print(json.dumps(out, indent=2))
     print(f"-> {path}")
